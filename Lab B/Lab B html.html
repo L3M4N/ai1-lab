@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>zadanie java</title>
+</head>
+
+<body>
+<input type="text" name="" id="textbox" placeholder="placeholder">
+<button id="add">dodaj</button>
+<ul id="lista">
+    <li>abcd</li>
+    <li>efgh</li>
+</ul>
+<input type="date" name="date">
+<input type="search" name="search">
+<script>
+    let a = document.getElementById("textbox").value;
+    let b = document.getElementById("textbox").innerText;
+    let button = document.getElementById('add');
+    button.addEventListener("click", function () {
+        document.getElementById('lista').innerHTML += '<li>'+ a +'</li>' + '<br>';
+        a = "";
+        b = "";
+    });
+</script>
+</body>
+</html>
