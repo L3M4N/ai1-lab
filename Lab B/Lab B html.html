@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>zadanie java</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Zadań</title>
+    <link rel="stylesheet" href="Lab%20B%20css.css">
 </head>
-
 <body>
-<input type="text" name="" id="textbox" placeholder="placeholder">
-<button id="add">dodaj</button>
-<ul id="lista">
-    <li>abcd</li>
-    <li>efgh</li>
-</ul>
-<input type="date" name="date">
-<input type="search" name="search">
+<div class="task-container">
+    <h1>Lista Zadań</h1>
+
+    <input type="text" id="search" placeholder="Wyszukaj zadania...">
+
+    <ul id="task-list"></ul>
+
+    <div class="task-form">
+        <input type="text" id="text" placeholder="Nowe zadanie" maxlength="255">
+        <input type="date" id="date">
+        <button id="add">Dodaj Zadanie</button>
+    </div>
+</div>
 <script src="Lab%20B%20javascript.js"></script>
 </body>
 </html>
