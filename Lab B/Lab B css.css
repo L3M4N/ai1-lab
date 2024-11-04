@@ -1,0 +1,110 @@
+body {
+    background-color: black;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.task-container {
+    background-color: white;
+    width: 80%;
+    margin: 10% 10% 0 10%;
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+
+#search {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    margin: 10px;
+    padding: 5px;
+    border: black 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.task-item input {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.task-item small {
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+#text {
+    flex-grow: 1;
+    padding: 10px;
+    width: 40%;
+}
+
+#date {
+    padding: 10px;
+}
+
+#add {
+    display: inline-block;
+    align-items: center;
+    padding: 10px;
+}
+
+#delete-selected {
+    display: inline-block;
+    background-color: #d82121;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 10px;
+}
+
+#delete-selected:hover {
+    background-color: black;
+    color: white;
+}
+
+.delete-button {
+    background-color: #d82121;
+    color: white;
+    border: none;
+    padding: 5px;
+    margin: 5px;
+    margin-left: auto;
+}
+
+.delete-button:hover {
+    background-color: black;
+    color: white;
+}
+
+.save-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 5px;
+    margin: 0 5px 0 5px;
+    margin-left: auto;
+}
+
+.highlight {
+    background-color: yellow;
+}

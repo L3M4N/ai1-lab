@@ -4,12 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const newTaskText = document.getElementById("text");
     const newTaskDate = document.getElementById("date");
     const addTaskButton = document.getElementById("add");
+    const deleteSelectedButton = document.getElementById("delete-selected");
 
-    // Add a button to delete selected tasks
-    const deleteSelectedButton = document.createElement("button");
-    deleteSelectedButton.textContent = "Usuń zaznaczone";
     deleteSelectedButton.onclick = deleteSelectedTasks;
-    document.querySelector(".task-container").appendChild(deleteSelectedButton);
 
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
@@ -27,10 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const span = document.createElement("span");
             span.innerHTML = filter ? task.text.replace(new RegExp(`(${filter})`, 'gi'), '<span class="highlight">$1</span>') : task.text;
+            if (task.dueDate) {
+                span.innerHTML += `<small>(${task.dueDate})</small>`;
+            }
             span.onclick = () => startEditingTask(index, span);
 
             const deleteButton = document.createElement("button");
             deleteButton.textContent = "Usuń";
+            deleteButton.classList.add("delete-button");
             deleteButton.onclick = () => deleteTask(index);
 
             li.append(checkbox, span, deleteButton);
@@ -85,16 +86,23 @@ document.addEventListener("DOMContentLoaded", () => {
         input.type = "text";
         input.value = tasks[index].text;
 
+        const dateInput = document.createElement("input");
+        dateInput.type = "date";
+        dateInput.value = tasks[index].dueDate || "";
+
         const saveButton = document.createElement("button");
         saveButton.textContent = "Zapisz";
-        saveButton.onclick = () => finishEditingTask(index, input, span);
+        saveButton.classList.add("save-button");
+        saveButton.onclick = () => finishEditingTask(index, input, dateInput, container);
 
         const cancelButton = document.createElement("button");
         cancelButton.textContent = "Anuluj";
-        cancelButton.onclick = () => cancelEditingTask(span, input);
+        cancelButton.classList.add("cancel-button");
+        cancelButton.onclick = () => cancelEditingTask(index, span, container);
 
         const container = document.createElement("div");
         container.appendChild(input);
+        container.appendChild(dateInput);
         container.appendChild(saveButton);
         container.appendChild(cancelButton);
 
@@ -102,10 +110,18 @@ document.addEventListener("DOMContentLoaded", () => {
         input.focus();
     }
 
-    function finishEditingTask(index, input, span) {
+    function finishEditingTask(index, input, dateInput, container) {
         const newText = input.value.trim();
+        const newDate = dateInput.value;
+        const now = new Date();
+
         if (newText.length >= 3 && newText.length <= 255) {
+            if (newDate && new Date(newDate) <= now) {
+                alert("Data musi być pusta albo w przyszłości.");
+                return;
+            }
             tasks[index].text = newText;
+            tasks[index].dueDate = newDate;
             saveTasks();
             renderTasks(searchInput.value);
         } else {
@@ -114,9 +130,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function cancelEditingTask(span, input) {
-        span.replaceWith(input);
-        renderTasks(searchInput.value);
+    function cancelEditingTask(index, span, container) {
+        container.replaceWith(span);
     }
 
     searchInput.oninput = () => {
