@@ -1,0 +1,79 @@
+body {
+    font-family: sans-serif;
+    background-image: url("storm.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+h1{
+    font-size: 50px;
+    -webkit-text-stroke: 2px black;
+    color: white;
+}
+
+#weather-search-params, #weather-results-container {
+    width: 350px;
+    margin: 15px auto;
+    text-align: center;
+}
+
+#locationInput{
+    font-size: 20px;
+}
+
+#checkButton{
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.weather-block {
+    display: block;
+    width: 350px;
+    height: 120px;
+    border: 1px solid #c0c0c0;
+    border-radius: 15px;
+    position: relative;
+    margin: 15px auto;
+    text-align: left;
+    background-color: black;
+    color: white;
+}
+
+.weather-date {
+    font-weight: bold;
+    width: 350px;
+    text-align: left;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    font-size: 20px;
+}
+
+.weather-icon {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100px;
+    height: 100px;
+}
+
+.weather-temperature {
+    position: absolute;
+    top: 30px;
+    left: 110px;
+    font-size: 33px;
+    font-weight: bold;
+}
+
+.weather-temperature-feels-like {
+    position: absolute;
+    top: 70px;
+    left: 110px;
+}
+
+.weather-description {
+    position: absolute;
+    top: 90px;
+    left: 110px;
+}
