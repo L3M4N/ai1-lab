@@ -1,0 +1,63 @@
+#topContainer {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+#map {
+    width: 800px;
+    height: 400px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+#buttons {
+    margin-bottom: 20px;
+}
+
+#coordinates {
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+#puzzleGrid {
+    width: 800px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat(4, 200px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 2px;
+    border: 2px dashed black;
+    margin-bottom: 20px;
+}
+
+.drop-zone {
+    border: 1px dashed #aaa;
+    position: relative;
+    background: red;
+}
+
+.drop-zone.over {
+    border: 2px solid #7FE9D9;
+}
+
+.drop-zone.correct {
+    border: 2px solid green;
+}
+
+#puzzlePieces {
+    width: 1700px;
+    min-height: 80px;
+    border: 2px solid black;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.puzzle-piece {
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+    cursor: move;
+}
